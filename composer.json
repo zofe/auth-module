@@ -50,6 +50,16 @@
             "zofe/rapyd-module-installer": true
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zofe\\Auth\\AuthServiceProvider"
+            ],
+            "aliases": {
+                "Permission": "Zofe\\Auth\\AuthFacade"
+            }
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
