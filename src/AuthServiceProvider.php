@@ -27,29 +27,30 @@ class AuthServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/permission.php' => config_path('permission.php'),
+                __DIR__ . '/../config/fortify.php' => config_path('fortify.php'),
             ], 'config');
 
         }
 
-        $lang_prefix = '';
-        $locale = request()->segment(1);
-
-        if (in_array($locale, config('app.locales'))) {
-            $lang_prefix = ($locale !== config('app.fallback_locale')) ? $locale : '';
-
-            if ($lang_prefix) {
-                session(['lang_prefix' => $lang_prefix]);
-            }
-            app()->setlocale($locale);
-        }
-
-        Route::group([
-            'namespace' => 'Laravel\Fortify\Http\Controllers',
-            'domain' => config('fortify.domain', null),
-            'prefix' => $lang_prefix, //config('fortify.prefix'),
-        ], function () {
-            $this->loadRoutesFrom(base_path('routes/fortify.php'));
-        }); // this closure
+//        $lang_prefix = '';
+//        $locale = request()->segment(1);
+//
+//        if (in_array($locale, config('app.locales'))) {
+//            $lang_prefix = ($locale !== config('app.fallback_locale')) ? $locale : '';
+//
+//            if ($lang_prefix) {
+//                session(['lang_prefix' => $lang_prefix]);
+//            }
+//            app()->setlocale($locale);
+//        }
+//
+//        Route::group([
+//            'namespace' => 'Laravel\Fortify\Http\Controllers',
+//            'domain' => config('fortify.domain', null),
+//            'prefix' => $lang_prefix, //config('fortify.prefix'),
+//        ], function () {
+//            $this->loadRoutesFrom(base_path('routes/fortify.php'));
+//        }); // this closure
 
         Fortify::loginView(function () {
             return view('auth.login');
@@ -85,6 +86,7 @@ class AuthServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
+        $this->mergeConfigFrom(__DIR__ . '/../config/fortify.php', 'fortify');
 
         Fortify::ignoreRoutes();
 
