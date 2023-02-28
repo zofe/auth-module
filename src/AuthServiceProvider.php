@@ -59,6 +59,10 @@ class AuthServiceProvider extends ServiceProvider
             return view('auth::auth.two-factor-challenge');
         });
 
+        Fortify::registerView(function () {
+            return view('auth::auth.register');
+        });
+
         Fortify::authenticateThrough(function (Request $request) {
             return array_filter([
                 config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
