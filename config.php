@@ -9,8 +9,4 @@
 */
 return [
     'layout' => 'demo::admin',
-
-    'providers' => [
-        Zofe\Auth\AuthServiceProvider::class
-    ],
 ];
