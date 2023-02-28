@@ -3,7 +3,7 @@
 namespace Zofe\Auth;
 
 
-use App\Actions\Fortify\ResetUserPassword;
+use App\Modules\Auth\Actions\Fortify\ResetUserPassword;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
