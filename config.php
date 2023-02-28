@@ -9,4 +9,32 @@
 */
 return [
     'layout' => 'demo::admin',
+    'permissions' => [
+        'view everything', 'edit everything', 'export everything',
+        'view own business', 'edit own business',
+
+        'view admins',  'edit admins',
+        'view companies', 'edit companies', 'add companies', 'mod companies', 'del companies',
+
+        'view users', 'edit users', 'add users', 'mod users', 'del users',
+        'view own users', 'edit own users', 'add own users', 'mod own users', 'del own users',
+    ],
+    'roles' => [
+        'admin',
+        'operator',
+        'customer'
+    ],
+    'role_permissions' => [
+        'admin' => [
+            'view everything', 'edit everything', 'export everything',
+        ],
+        'operator' => [
+            'view companies', 'edit companies', 'add companies', 'mod companies', 'del companies',
+            'view users', 'edit users', 'add users', 'mod users', 'del users',
+        ],
+        'customer' => [
+            'view own business', 'edit own business',
+            'view own users', 'edit own users', 'add own users', 'mod own users', 'del own users',
+        ]
+    ],
 ];

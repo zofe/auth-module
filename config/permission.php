@@ -3,9 +3,8 @@
 return [
 
     'models' => [
-
-        'permission' => Spatie\Permission\Models\Permission::class,
-        'role' => Spatie\Permission\Models\Role::class,
+        'permission' => \App\Modules\Auth\Models\Permission::class,
+        'role' => \App\Modules\Auth\Models\Role::class
     ],
 
     'table_names' => [
