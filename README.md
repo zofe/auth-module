@@ -18,7 +18,7 @@ The mudule has a configuration file that allows you to define roles, permissions
 After possibly adjusting them to your needs a seeder will allow you to create the entire authentication system.
 
 
-This module is based on 
+these features are based on the
 https://github.com/spatie/laravel-permission
 
 
