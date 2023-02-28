@@ -53,10 +53,10 @@ class AuthServiceProvider extends ServiceProvider
 //        }); // this closure
 
         Fortify::loginView(function () {
-            return view('auth.login');
+            return view('auth::auth.login');
         });
         Fortify::twoFactorChallengeView(function () {
-            return view('auth.two-factor-challenge');
+            return view('auth::auth.two-factor-challenge');
         });
 
         Fortify::authenticateThrough(function (Request $request) {
