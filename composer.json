@@ -19,7 +19,7 @@
         "zofe/layout-module": "dev-main|^0.0|^0.1",
         "lab404/laravel-impersonate": "^1.7.3",
         "spatie/laravel-permission": "^5.5",
-        "laravel/fortify": "^1.8"
+        "laravel/fortify": "^1.14.1"
     },
     "require-dev": {
         "orchestra/testbench": "^v6.0|^v7.0|^v8.0",
