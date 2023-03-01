@@ -32,25 +32,27 @@ class AuthServiceProvider extends ServiceProvider
 
         }
 
-//        $lang_prefix = '';
-//        $locale = request()->segment(1);
-//
-//        if (in_array($locale, config('app.locales'))) {
-//            $lang_prefix = ($locale !== config('app.fallback_locale')) ? $locale : '';
-//
-//            if ($lang_prefix) {
-//                session(['lang_prefix' => $lang_prefix]);
-//            }
-//            app()->setlocale($locale);
-//        }
-//
-//        Route::group([
-//            'namespace' => 'Laravel\Fortify\Http\Controllers',
-//            'domain' => config('fortify.domain', null),
-//            'prefix' => $lang_prefix, //config('fortify.prefix'),
-//        ], function () {
-//            $this->loadRoutesFrom(base_path('routes/fortify.php'));
-//        }); // this closure
+        $lang_prefix = '';
+        $locale = request()->segment(1);
+
+        if (in_array($locale, config('app.locales'))) {
+            $lang_prefix = ($locale !== config('app.fallback_locale')) ? $locale : '';
+
+            if ($lang_prefix) {
+                session(['lang_prefix' => $lang_prefix]);
+            }
+            app()->setlocale($locale);
+        }
+
+
+
+        Route::group([
+            'namespace' => 'Laravel\Fortify\Http\Controllers',
+            'domain' => config('fortify.domain', null),
+            'prefix' => $lang_prefix, //config('fortify.prefix'),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes_fortify.php');//'base_path('routes/fortify.php')
+        }); // this closure
 
         Fortify::loginView(function () {
             return view('auth::auth.login');
@@ -61,6 +63,9 @@ class AuthServiceProvider extends ServiceProvider
 
         Fortify::registerView(function () {
             return view('auth::auth.register');
+        });
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth::auth.forgot-password');
         });
 
         Fortify::authenticateThrough(function (Request $request) {
