@@ -9,6 +9,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -95,8 +96,13 @@ class AuthServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $filesystem = new Filesystem;
+
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
-        $this->mergeConfigFrom(__DIR__ . '/../config/fortify.php', 'fortify');
+
+        if (!$filesystem->exists(config_path('fortify.php'))) {
+            Config::set('fortify', include __DIR__ . '/../config/fortify.php');
+        }
 
         Fortify::ignoreRoutes();
 
