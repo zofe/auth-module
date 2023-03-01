@@ -3,6 +3,7 @@
 namespace Zofe\Auth;
 
 
+use App\Modules\Auth\Actions\Fortify\CreateNewUser;
 use App\Modules\Auth\Actions\Fortify\ResetUserPassword;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Filesystem\Filesystem;
@@ -77,7 +78,7 @@ class AuthServiceProvider extends ServiceProvider
             ]);
         });
 
-        //Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::createUsersUsing(CreateNewUser::class);
         //Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         //Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
