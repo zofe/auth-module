@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": "^7.4|^8.0|^8.1|^8.2",
-        "illuminate/config": "^8.65|^9.0|^10.0",
-        "illuminate/contracts": "^8.65|^9.0|^10.0",
+        "illuminate/config": "^8.82|^9.0|^10.0",
+        "illuminate/contracts": "^8.82|^9.0|^10.0",
         "livewire/livewire": "^2.0",
         "zofe/rapyd-livewire": "dev-main|^0.8",
         "zofe/rapyd-module-installer": "^0.0|^0.1",
