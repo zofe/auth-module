@@ -6,15 +6,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card p-5">
-{{--                    <div class="card-header">{{ __('Verify Your Email Address') }} </div>--}}
 
                     <div class="text-center">
-                        <img src="{{ asset('img/logo.login.svg') }}" class="img-fluid mb-3" style="max-width: 250px;" alt="Uania desk" />
+                        <h1 class="h4 text-gray-900 mb-4">{{ __('Verify Your Email Address') }}</h1>
                     </div>
-                    <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Recupera o Imposta password</h1>
-                    </div>
-
 
                     <div class="card-body">
                         @if (session('status'))
@@ -22,7 +17,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
 
                         <div class="p-2">
 {{--                              Se la tua email è abilitata puoi recuperare o impostare la password d'accesso--}}
@@ -46,7 +40,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row pt-1">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
                                     <button type="submit" class="btn btn-primary off">

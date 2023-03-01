@@ -10,9 +10,6 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
 
-                                    <div class="text-center">
-                                        <img src="{{ asset('img/logo.login.svg') }}" class="img-fluid mb-3" style="max-width: 250px;" alt="Uania desk" />
-                                    </div>
 
 {{--                                    <div class="text-center">--}}
 {{--                                        <h1 class="h4 text-gray-900 mb-4">{{ __('Verify Your Email Address') }}</h1>--}}
