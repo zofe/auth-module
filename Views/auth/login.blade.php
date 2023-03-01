@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                         <div class="col-lg-6">
-                            <div class="p-5">
+                            <div class="p-md-5">
 
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
@@ -37,10 +37,10 @@
                                         <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required autofocus>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group pt-1">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
                                         @if (Route::has('password.request'))
-                                            <div class="float-right">
+                                            <div class="float-right pt-1">
                                                 <a class="small" href="{{ route_lang('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
@@ -48,7 +48,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group pt-1">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                             <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
