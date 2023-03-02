@@ -37,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
         $lang_prefix = '';
         $locale = request()->segment(1);
 
-        if (in_array($locale, config('app.locales', []))) {
+        if (config('app.locales') && in_array($locale, config('app.locales'))) {
             $lang_prefix = ($locale !== config('app.fallback_locale')) ? $locale : '';
 
             if ($lang_prefix) {
