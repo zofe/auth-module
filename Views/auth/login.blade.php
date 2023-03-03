@@ -7,7 +7,11 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-5">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+
+                            <h1>{{ config('app.name', 'Laravel') }}</h1>
+
+                        </div>
                         <div class="col-lg-6">
                             <div class="p-md-5">
 

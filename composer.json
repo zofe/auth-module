@@ -30,10 +30,7 @@
         "psr-4": {
             "Zofe\\Auth\\": "src",
             "Zofe\\Auth\\Database\\Factories\\": "database/factories"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
