@@ -27,7 +27,7 @@ The module has a configuration file that allows you to define roles, permissions
 
 After possibly adjusting them to your needs a seeder will allow you to create the entire authentication system.
 
-A default configuration is provided in ./config/permission.php but you can customize it before running the db seeder provided
+The editable configuration is provided in ./config/permission.php
 
 these features are based on the library:
 https://github.com/spatie/laravel-permission
