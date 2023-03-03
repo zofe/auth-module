@@ -1,11 +1,21 @@
 # Auth Module
 
-This is a auth module for a Laravel application (>= 8) 
+This is an auth module for a Laravel application (>= 8) 
 
 It embed login, registration, two factor authentication, role/permission management, impersonation features.
 
 
-# Models
+
+# Login / Registration & Two factor authentication
+
+This module give you out of the box a fortify implementation https://laravel.com/docs/10.x/fortify#main-content 
+with a bootstrap layout and default configuration you can customize on ./config/fortify.php 
+
+
+these features are based on the library
+https://github.com/laravel/fortify
+
+# Permissions & Models
 
 Two Models will be provided by this module:
  - Role
@@ -13,18 +23,22 @@ Two Models will be provided by this module:
 
 As you can imagine the role is a characteristic you can associate with a user, permissions are the "actions granted" for that role.
 
-The mudule has a configuration file that allows you to define roles, permissions, and the relationship between them.
+The module has a configuration file that allows you to define roles, permissions, and the relationship between them.
 
 After possibly adjusting them to your needs a seeder will allow you to create the entire authentication system.
 
+A default configuration is provided in ./config/permission.php but you can customize it before running the db seeder provided
 
-these features are based on the
+these features are based on the library:
 https://github.com/spatie/laravel-permission
 
 
 # Impersonation 
 
 One of the necessary features in the implementation of a backend is to impersonate other users/customers, this module has this functionality built in
+
+this features is based on the library
+https://github.com/lab404/laravel-impersonate
 
 
 # Installation & configuration 
