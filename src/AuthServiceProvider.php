@@ -69,7 +69,9 @@ class AuthServiceProvider extends ServiceProvider
         Fortify::requestPasswordResetLinkView(function () {
             return view('auth::auth.forgot-password');
         });
-
+        Fortify::resetPasswordView(function () {
+            return view('auth::auth.reset-password');
+        });
         Fortify::authenticateThrough(function (Request $request) {
             return array_filter([
                 config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,

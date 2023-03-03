@@ -8,7 +8,10 @@
 |
 */
 return [
-    'layout' => 'demo::admin',
+    'layout' => 'auth::admin',
+    'menu_admin' => 'auth::admin_menu',
+    'menu_admin_position' => 0,
+
     'permissions' => [
         'view everything', 'edit everything', 'export everything',
         'view own business', 'edit own business',
