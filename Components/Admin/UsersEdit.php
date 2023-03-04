@@ -5,6 +5,7 @@ namespace App\Modules\Auth\Components\Admin;
 
 
 use App\Models\User;
+use App\Modules\Auth\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -24,11 +25,14 @@ class UsersEdit extends Component
 
     public $readonly = false;
 
+    public $available_roles = [];
+
 
     protected $rules = [
         'user.name' => 'required',
         'user.email' => 'required|email|unique:users,email',
         'psswd' => 'nullable',
+        'roles' => 'nullable',
     ];
 
     public function addRule($field, $rule)
@@ -39,6 +43,10 @@ class UsersEdit extends Component
     public function mount(?User $user)
     {
         $this->user = $user;
+        if($user->exists && method_exists($user, 'roles')) {
+            $this->roles = $user->roles->pluck('id')->toArray();
+        }
+        $this->available_roles = Role::query()->pluck('name', 'id')->toArray();
     }
 
     public function save()
@@ -57,6 +65,10 @@ class UsersEdit extends Component
             $this->user->password = Hash::make($this->psswd);
         }
 
+        if(method_exists($this->user, 'roles')) {
+            $this->user->roles()->sync(array_filter($this->roles));
+        }
+
         $this->user->save();
 
         return redirect()->to(route('auth.users.view', $this->user->getKey()));
@@ -65,6 +77,6 @@ class UsersEdit extends Component
     public function render()
     {
         return view('auth::Admin.views.users_edit')
-            ->layout('demo::admin');
+            ->layout('auth::admin');
     }
 }

@@ -11,11 +11,6 @@ class UsersTable extends Component
     use WithDataTable;
     public $search;
 
-    public function updatedAuthorId()
-    {
-        $this->resetPage();
-    }
-
     public function updatedSearch()
     {
         $this->resetPage();
@@ -37,6 +32,6 @@ class UsersTable extends Component
         $items = $this->getDataSet();
 
         return view('auth::Admin.views.users_table', compact('items'))
-            ->layout('demo::admin');
+            ->layout('auth::admin');
     }
 }

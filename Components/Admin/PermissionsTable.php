@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Modules\Auth\Components\Admin;
+
+use App\Models\User;
+use App\Modules\Auth\Models\Role;
+use Zofe\Rapyd\Traits\WithDataTable;
+use Livewire\Component;
+
+class PermissionsTable extends Component
+{
+    use WithDataTable;
+    public $search;
+
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function getDataSet()
+    {
+        $search = $this->search;
+        $items = Role::with('permissions')->where(function ($q) use ($search) {
+            $q->where('name', 'like', '%'.$search.'%')
+                ->orWhereHas('permissions', function ($q) use ($search) {
+                    $q->where('name', 'like', '%'.$search.'%');
+                });
+        })->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage);
+
+        return $items;
+    }
+
+    public function render()
+    {
+        $items = $this->getDataSet();
+
+        return view('auth::Admin.views.permissions_table', compact('items'))
+            ->layout('demo::admin');
+    }
+}

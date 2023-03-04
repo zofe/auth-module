@@ -6,10 +6,24 @@
 
         <x-rpd::edit title="User Edit">
             <div>
-                <div class="row mb-5">
+                <div class="row mb-2">
                     <x-rpd::input col="col-6" model="user.name" label="Name" />
                     <x-rpd::input col="col-6" model="user.email" label="Email" />
+                </div>
+                <div class="row mb-5">
                     <x-rpd::input col="col-6" model="psswd" label="New Password" type="password" />
+
+                    @if(method_exists($user, 'roles'))
+                        <x-rpd::select-list col="col-6" model="roles" multiple :options="$available_roles" label="Roles" />
+                    @else
+
+                        <div class="col-6 small">
+                            <label class="col-form-label">Roles</label>
+                            <div class="text-warning small">
+                                please add the trait Zofe\Auth\Traits\HasRoles in your User model
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <x-slot name="actions">
@@ -23,30 +37,3 @@
 
 
 
-@section('doc')
-    <div class="row my-3">
-        <div class="col-4">
-            @include('demo::Articles.views.folders')
-        </div>
-        <div class="col-8">
-            <div v-pre class="documenter h-100">
-                <h4>route</h4>
-{!! App\Modules\Demo\Documenter::showCode("Components/routes.php", false, '^Route::get\(\'demo\/article\/edit.*}\);$') !!}
-            </div>
-        </div>
-    </div>
-    <div class="row" v-pre>
-        <div class="col-6">
-            <div class="documenter">
-                <h4>component</h4>
-{!! App\Modules\Demo\Documenter::showCode("Components/Articles/ArticlesEdit.php") !!}
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="documenter">
-                <h4>view</h4>
-{!! App\Modules\Demo\Documenter::showCode("Components/Articles/views/articles_edit.blade.php", true) !!}
-            </div>
-        </div>
-    </div>
-@endsection

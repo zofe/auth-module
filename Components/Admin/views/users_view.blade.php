@@ -10,6 +10,10 @@
         <dd class="col-9">{{ $user->name }}</dd>
         <dt class="col-3">Email</dt>
         <dd class="col-9">{{ $user->email }}</dd>
+        <dt class="col-3">Roles</dt>
+        <dd class="col-9">
+                {{ optional(optional($user->roles)->pluck('name'))->join(',') }}
+        </dd>
       </dl>
 
     </x-rpd::view>

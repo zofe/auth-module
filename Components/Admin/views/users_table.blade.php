@@ -20,6 +20,7 @@
                 </th>
                 <th>name</th>
                 <th>email</th>
+                <th>roles</th>
             </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                 </td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ optional(optional($user->roles)->pluck('name'))->join(',') }}</td>
             </tr>
             @endforeach
             </tbody>

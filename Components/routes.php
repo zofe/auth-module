@@ -1,5 +1,7 @@
 <?php
 
+use App\Modules\Auth\Components\Admin\PermissionsEdit;
+use App\Modules\Auth\Components\Admin\PermissionsTable;
 use App\Modules\Auth\Components\Admin\UsersTable;
 use App\Modules\Auth\Components\Admin\UsersView;
 use App\Modules\Auth\Components\Admin\UsersEdit;
@@ -19,7 +21,7 @@ Route::get('auth/users/view/{user:id}', UsersView::class)
         $crumbs->parent('auth.users')->push('View User', route('auth.users.view', $user));
     });
 
-Route::get('auth/article/edit/{user:id?}', UsersEdit::class)
+Route::get('auth/users/edit/{user:id?}', UsersEdit::class)
     ->middleware(['web'])
     ->name('auth.users.edit')
     ->crumbs(function ($crumbs, $user = null) {
@@ -32,3 +34,15 @@ Route::get('auth/article/edit/{user:id?}', UsersEdit::class)
         }
     });
 
+Route::get('auth/permissions', PermissionsTable::class)
+    ->middleware(['web'])
+    ->name('auth.permissions')
+    ->crumbs(fn ($crumbs) => $crumbs->push('Permissions', route('auth.permissions')));
+
+Route::get('auth/permissions/edit/{role:id}', PermissionsEdit::class)
+    ->middleware(['web'])
+    ->name('auth.permissions.edit')
+    ->crumbs(function ($crumbs, $role) {
+        $crumbs->parent('auth.permissions')
+            ->push('Edit User', route('auth.permissions.edit', $role));
+    });
