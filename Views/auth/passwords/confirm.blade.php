@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('auth::blank')
 
 @section('main-content')
     <div class="container">

@@ -1,5 +1,2 @@
 @extends('layout::admin')
 
-
-
-

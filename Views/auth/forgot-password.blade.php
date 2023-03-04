@@ -1,4 +1,4 @@
-@extends('auth::frontend')
+@extends('auth::blank')
 
 @section('main-content')
 
@@ -18,10 +18,7 @@
                             </div>
                         @endif
 
-                        <div class="p-2">
-{{--                              Se la tua email è abilitata puoi recuperare o impostare la password d'accesso--}}
-{{--                            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}--}}
-                        </div>
+
 
 
                         <form method="POST" action="{{ route('password.email') }}">
@@ -44,8 +41,7 @@
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
                                     <button type="submit" class="btn btn-primary off">
-                                        Inviami il Password Reset Link
-{{--                                        {{ __('Email Password Reset Link') }}--}}
+                                        {{ __('Email Password Reset Link') }}
                                     </button>
                                 </div>
                             </div>

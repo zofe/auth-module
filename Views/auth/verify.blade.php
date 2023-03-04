@@ -1,4 +1,4 @@
-@extends('auth::frontend')
+@extends('auth::blank')
 
 @section('main-content')
 <div class="container">
