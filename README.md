@@ -72,7 +72,7 @@ this will check if one of role or permission is applied to the logged-in user, o
 
 This module include a middleware out of the box, that search for priority component instead of the one defaulted by the route.
 
-By "priority component" we mean a controller that is prefixed with the "Rolename" of the logged-in user
+By "priority component" we mean a component that is prefixed with the "Rolename" of the logged-in user
 e.g., despite the defined route :
 
 `Route::get('/companies/view/{company:id}', CompaniesView::class)`
