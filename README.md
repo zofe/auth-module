@@ -8,6 +8,7 @@ It embed:
 - role/permission management
 - user management
 - impersonation features.
+- component permissions, and priority "role based"
 
 
 # Login / Registration & Two factor authentication
@@ -39,6 +40,65 @@ One of the necessary features in the implementation of a backend is to impersona
 
 this features is based on the library
 https://github.com/lab404/laravel-impersonate
+
+# Component roles & permissions
+
+This module include a trait `Zofe\Auth\Traits\Authorize` to check roles or permissions before build/render/execute component actions.
+
+you can just include the trait:
+
+```php
+
+use Zofe\Auth\Traits\Authorize;
+
+class CompaniesEdit extends Component
+{
+    use Authorize;
+```
+
+then add authorize check at booted time in your components:
+
+```php
+    public function booted()
+    {
+        $this->authorize('admin|edit users');
+    }
+```
+
+this will check if one of role or permission is applied to the logged-in user, otherwise it gives a permission error.
+
+
+# Component priority role based
+
+This module include a middleware out of the box, that search for priority component instead of the one defaulted by the route.
+
+By "priority component" we mean a controller that is prefixed with the "Rolename" of the logged-in user
+e.g., despite the defined route :
+
+`Route::get('/companies/view/{company:id}', CompaniesView::class)`
+
+`Customer` role user the middleware looks for `CustomerCompaniesView::class` and dispenses that if it exists.
+
+this allows you to extend livewire components and adapt features and views potentially for each `role` to be managed (if you need to do so).
+
+Just configure your prefixes in the config:
+```php
+    'role_to_component_prefix' => [
+        'customer' => 'customer'
+    ],
+```
+
+add the middleware in your app/Http/Kernel.php
+```php
+    protected $middlewareGroups = [
+        'web' => [
+            //..
+            Zofe\Auth\Middleware\ComponentByRole::class,
+        ],
+    ]
+```
+
+
 
 
 # Installation & configuration 

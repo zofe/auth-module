@@ -40,4 +40,10 @@ return [
             'view own users', 'edit own users', 'add own users', 'mod own users', 'del own users',
         ]
     ],
+    'role_to_component_prefix' => [
+    ],
+    'role_to_component_fallback' => [
+    ]
+
+
 ];
