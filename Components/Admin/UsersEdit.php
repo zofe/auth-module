@@ -65,11 +65,11 @@ class UsersEdit extends Component
             $this->user->password = Hash::make($this->psswd);
         }
 
+        $this->user->save();
         if(method_exists($this->user, 'roles')) {
             $this->user->roles()->sync(array_filter($this->roles));
         }
 
-        $this->user->save();
 
         return redirect()->to(route('auth.users.view', $this->user->getKey()));
     }
