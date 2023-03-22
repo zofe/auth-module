@@ -33,6 +33,9 @@ class ComponentByRole
             $prefix = null;
 
             foreach (Auth::user()->roles->pluck('name')->toArray() as $r) {
+                if (Auth::user()->hasRole('admin')) {
+                    break;
+                }
                 $prefix = config('auth.role_to_component_prefix.'.$r);
                 $role = $r;
                 if($prefix) {
