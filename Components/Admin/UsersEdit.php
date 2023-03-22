@@ -8,10 +8,12 @@ use App\Models\User;
 use App\Modules\Auth\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Zofe\Auth\Traits\Authorize;
 
 
 class UsersEdit extends Component
 {
+    use Authorize;
 
     public $user;
 
@@ -34,6 +36,11 @@ class UsersEdit extends Component
         'psswd' => 'nullable',
         'roles' => 'nullable',
     ];
+
+    public function booted()
+    {
+        $this->authorize('admin|edit users');
+    }
 
     public function addRule($field, $rule)
     {

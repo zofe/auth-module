@@ -4,14 +4,21 @@ namespace App\Modules\Auth\Components\Admin;
 
 use App\Models\User;
 use App\Modules\Auth\Models\Role;
+use Zofe\Auth\Traits\Authorize;
 use Zofe\Rapyd\Traits\WithDataTable;
 use Livewire\Component;
 
 class PermissionsTable extends Component
 {
+    use Authorize;
     use WithDataTable;
     public $search;
 
+
+    public function booted()
+    {
+        $this->authorize('admin|edit users');
+    }
 
     public function updatedSearch()
     {

@@ -5,6 +5,7 @@ namespace Zofe\Auth\Traits;
 
 use App\Models\User;
 use Spatie\Permission\Exceptions\UnauthorizedException;
+use function Termwind\render;
 
 trait Authorize {
 
@@ -16,7 +17,8 @@ trait Authorize {
         /** @var User $user */
         $user = auth()->user();
         if (! $user ) {
-            throw UnauthorizedException::notLoggedIn();
+            return redirect()->to(route('login'));
+            // throw UnauthorizedException::notLoggedIn();
         }
 
         if(!app()->environment('testing')) {

@@ -7,11 +7,12 @@ namespace App\Modules\Auth\Components\Admin;
 use App\Modules\Auth\Models\Permission;
 use App\Modules\Auth\Models\Role;
 use Livewire\Component;
+use Zofe\Auth\Traits\Authorize;
 
 
 class PermissionsEdit extends Component
 {
-
+    use Authorize;
     public $role;
 
     public $roles = [];
@@ -24,6 +25,11 @@ class PermissionsEdit extends Component
     protected $rules = [
         'permissions' => 'nullable',
     ];
+
+    public function booted()
+    {
+        $this->authorize('admin|edit users');
+    }
 
     public function addRule($field, $rule)
     {
