@@ -38,8 +38,26 @@ https://github.com/spatie/laravel-permission
 
 One of the necessary features in the implementation of a backend is to impersonate other users/customers, this module has this functionality built in
 
+This module include a trait `Zofe\Auth\Traits\Impersonate` to check roles if user can impersonate other and to check if user can be impersonated.
+
+By default, this trait add check if You are admin and the user you want to impersonate is not an admin (using roles).
+
+for a custom implementation override `canImpersonate()` and `canBeImpersonated()` in your model
+
+```php
+
+use Zofe\Auth\Traits\Impersonate;
+
+class User extends Model
+{
+  use Impersonate;
+
+```
+
 this features is based on the library
 https://github.com/lab404/laravel-impersonate
+
+
 
 # Component roles & permissions
 

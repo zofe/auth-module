@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::impersonate();
 //
 //use Illuminate\Support\Facades\Route;
 //use Laravel\Fortify\Features;
