@@ -9,8 +9,8 @@
                     <div class="row">
                         <div class="col-lg-6 d-flex align-items-center justify-content-center">
 
-                            @if(config('layout.logo'))
-                                <img src="{{ config('layout.logo') }}" class="img-fluid px-2 bg-primary">
+                            @if(config('layout.logo_login'))
+                                <img src="{{ config('layout.logo_login') }}" class="img-fluid px-2">
                             @else
                                 <h1>{{ config('app.name', 'Laravel') }}</h1>
                             @endif
