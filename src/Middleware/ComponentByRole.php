@@ -27,15 +27,40 @@ class ComponentByRole
     public function handle($request, Closure $next)
     {
 
-        if (Auth::user() && Auth::user()->roles ) {
-
+        if (Auth::user() && Auth::user()->roles )
+        {
             $role = null;
             $prefix = null;
+
+            $route = $request->route();
+            $action = $route->getAction();
 
             foreach (Auth::user()->roles->pluck('name')->toArray() as $r) {
                 if (Auth::user()->hasRole('admin')) {
                     break;
                 }
+
+                $class_names = config('auth.role_to_component_class.'.$r);
+                if($class_names) {
+                    if(isset($class_names[$route->getName()])) {
+                        if(isset($action['controller']) && isset($action['uses'])) {
+                            $uses = substr($action['uses'], strpos($action['uses'],'@'));
+                            $controller_role = $class_names[$route->getName()];
+                            if(class_exists($controller_role)) {
+
+                                $routeAction = array_merge($route->getAction(), [
+                                    'uses' => '\\' . $controller_role . $uses,
+                                    'controller' => '\\' . $controller_role,
+                                ]);
+
+                                $route->setAction($routeAction);
+                                $route->controller = false;
+                            }
+                            return $next($request);
+                        }
+                    }
+                }
+
                 $prefix = config('auth.role_to_component_prefix.'.$r);
                 $role = $r;
                 if($prefix) {
@@ -43,10 +68,6 @@ class ComponentByRole
                 }
             }
 
-            $route = $request->route();
-            $action = $route->getAction();
-
-            //dd($action);
             if(isset($action['controller']) && isset($action['uses'])) {
                 $controller = $action['controller'];
                 $uses = substr($action['uses'], strpos($action['uses'],'@'));

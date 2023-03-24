@@ -43,7 +43,9 @@ return [
     'role_to_component_prefix' => [
     ],
     'role_to_component_fallback' => [
-    ]
+    ],
+    'role_to_component_class' => [
+    ],
 
 
 ];
