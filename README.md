@@ -121,7 +121,7 @@ add the middleware in your app/Http/Kernel.php
 
 # Installation & configuration 
 
-Your laravel application must have rapyd-livewire package already installed first, then you can require this module using: 
+Your can require this module in your laravel application using:
 ```
 composer require zofe/auth-module
 
