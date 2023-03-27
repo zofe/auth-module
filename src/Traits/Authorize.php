@@ -12,13 +12,14 @@ trait Authorize {
     public static $classInstance = [];
 
 
-    public function authorize($roleOrPermission, $entity = null)
+    public function authorize($roleOrPermission, $entity = null, $user=null)
     {
-        /** @var User $user */
-        $user = auth()->user();
+        if (! $user) {
+            $user = \Illuminate\Support\Facades\Auth::user();
+        }
+
         if (! $user ) {
             return redirect()->to(route('login'));
-            // throw UnauthorizedException::notLoggedIn();
         }
 
         if(!app()->environment('testing')) {
@@ -39,7 +40,21 @@ trait Authorize {
             throw UnauthorizedException::forRolesOrPermissions($rolesOrPermissions);
         }
 
-        //todo $entity check
+
+        if($entity) {
+            foreach(config('auth.authorizations') as $check) {
+
+                if(get_class($entity) == $check::$model) {
+                    $result = call_user_func(array($check, 'check'), $entity, $user);
+
+                    if(!$result) {
+                        abort(404);
+                    };
+                }
+
+            }
+
+        }
 
     }
 }

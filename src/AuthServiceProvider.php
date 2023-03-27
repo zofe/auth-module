@@ -10,6 +10,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -94,6 +95,8 @@ class AuthServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
+
+        //$this->configAuthorizeModules();
     }
 
     public function register()
@@ -122,4 +125,20 @@ class AuthServiceProvider extends ServiceProvider
 
 
     }
+
+//    public function configAuthorizeModules()
+//    {
+//
+//        $moduleBasePath = $modulePath = app_path(). '/Modules/';
+//
+//        config(['auth.auth_checks' => []]);
+//        if (File::exists($moduleBasePath)) {
+//            $dirs = File::directories($moduleBasePath);
+//
+//            foreach ($dirs as $moduleP) {
+//                config(['auth.auth_checks.' => $moduleP]);
+//            }
+//        }
+//
+//    }
 }
