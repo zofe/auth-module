@@ -44,7 +44,7 @@ trait Authorize {
         if($entity) {
             foreach(config('auth.authorizations') as $check) {
 
-                if(get_class($entity) == $check::$model) {
+                if(get_class($entity) == $check::$model && $entity->exists) {
                     $result = call_user_func(array($check, 'check'), $entity, $user);
 
                     if(!$result) {
