@@ -1,6 +1,6 @@
 <?php
 
-namespace Uania\Permission\Tests;
+namespace App\Modules\Auth\tests;
 
 class ExampleTest extends TestCase
 {

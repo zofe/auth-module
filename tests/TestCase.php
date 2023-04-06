@@ -1,13 +1,13 @@
 <?php
 
-namespace Uania\Permission\Tests;
+namespace App\Modules\Auth\tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Facade;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Uania\Permission\PermissionServiceProvider;
+use Zofe\Auth\AuthServiceProvider;
 
 
 class TestCase extends Orchestra
@@ -24,9 +24,9 @@ class TestCase extends Orchestra
         Facade::setFacadeApplication(app());
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Uania\\Permission\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+//        Factory::guessFactoryNamesUsing(
+//            fn (string $modelName) => 'Uania\\Permission\\Database\\Factories\\'.class_basename($modelName).'Factory'
+//        );
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }
@@ -49,7 +49,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            PermissionServiceProvider::class,
+            AuthServiceProvider::class,
             LivewireServiceProvider::class,
         ];
     }

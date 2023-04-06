@@ -1,9 +1,9 @@
 <?php
 
-namespace Uania\BasicPermission\Tests\Feature;
+namespace App\Modules\Auth\tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Uania\BasicPermission\Tests\TestCase;
+use App\Modules\Auth\tests\TestCase;
 
 class BasicPermissionTest extends TestCase
 {
