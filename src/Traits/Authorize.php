@@ -40,7 +40,7 @@ trait Authorize {
             throw UnauthorizedException::forRolesOrPermissions($rolesOrPermissions);
         }
 
-
+        //dd(config('auth.authorizations'));
         if($entity) {
             foreach(config('auth.authorizations') as $check) {
 

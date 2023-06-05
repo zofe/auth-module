@@ -8,7 +8,7 @@
             <div>
                 <div class="row mb-2">
                     <x-rpd::input col="col-6" model="user.name" label="Name" />
-                    <x-rpd::input col="col-6" model="user.email" label="Email" />
+                    <x-rpd::input col="col-6" model="user.email" label="E-mail" />
                 </div>
                 <div class="row mb-5">
                     <x-rpd::input col="col-6" model="psswd" label="New Password" type="password" />
