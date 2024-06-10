@@ -30,7 +30,7 @@
                                     </div>
                                 @endif
 
-                                <form method="POST" action="{{ route('password.email') }}" class="user">
+                                <form method="POST" action="{{ route_lang('password.email') }}" class="user">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">

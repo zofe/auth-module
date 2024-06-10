@@ -31,7 +31,7 @@
                                         </div>
                                     @endif
 
-                                    <form method="POST" action="{{ route('password.confirm') }}" class="user">
+                                    <form method="POST" action="{{ route_lang('password.confirm') }}" class="user">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <div class="form-group">
@@ -49,7 +49,7 @@
 
                                     @if (Route::has('password.request'))
                                         <div class="text-center">
-                                            <a class="small" href="{{ route('password.request') }}">
+                                            <a class="small" href="{{ route_lang('password.request') }}">
                                                 {{ __('Forgot Password?') }}
                                             </a>
                                         </div>

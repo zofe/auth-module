@@ -21,7 +21,7 @@
 
 
 
-                        <form method="POST" action="{{ route('password.email') }}">
+                        <form method="POST" action="{{ route_lang('password.email') }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

@@ -38,7 +38,7 @@ https://github.com/spatie/laravel-permission
 
 One of the necessary features in the implementation of a backend is to impersonate other users/customers, this module has this functionality built in
 
-This module include a trait `Zofe\Auth\Traits\Impersonate` to check roles if user can impersonate other and to check if user can be impersonated.
+This module include a trait `App\Modules\Auth\Traits\Impersonate` to check roles if user can impersonate other and to check if user can be impersonated.
 
 By default, this trait add check if You are admin and the user you want to impersonate is not an admin (using roles).
 
@@ -46,7 +46,7 @@ for a custom implementation override `canImpersonate()` and `canBeImpersonated()
 
 ```php
 
-use Zofe\Auth\Traits\Impersonate;
+use App\Modules\Auth\Traits\Impersonate;
 
 class User extends Model
 {
@@ -64,13 +64,13 @@ https://github.com/lab404/laravel-impersonate
 
 ## Authorize trait
 
-This module include a trait `Zofe\Auth\Traits\Authorize` to check roles or permissions before build/render/execute component actions.
+This module include a trait `App\Modules\Auth\Traits\Authorize` to check roles or permissions before build/render/execute component actions.
 
 you can just include the trait, then add authorize check at booted time in your components:
 
 ```php
 
-use Zofe\Auth\Traits\Authorize;
+use App\Modules\Auth\Traits\Authorize;
 
 class CompaniesEdit extends Component
 {
@@ -86,7 +86,7 @@ this will check if one of role or permission is applied to the logged-in user, o
 
 ## Limit trait
 
-This module include a trait `Zofe\Auth\Traits\Limit` to add global scopes in your application, specific for role you need to jailroot eloquent models to specific query scopes. 
+This module include a trait `App\Modules\Auth\Traits\Limit` to add global scopes in your application, specific for role you need to jailroot eloquent models to specific query scopes. 
 
 
 ```php
@@ -95,7 +95,7 @@ This module include a trait `Zofe\Auth\Traits\Limit` to add global scopes in you
 namespace App\Modules\Companies\Components\Companies;
 
 use App\Models\Company;
-use Zofe\Auth\Traits\Limit;
+use App\Modules\Auth\Traits\Limit;
 use Livewire\Component;
 
 class CustomersTable extends Component
@@ -163,11 +163,12 @@ Just configure your prefixes in the config:
 ```
 
 add the middleware in your app/Http/Kernel.php
+
 ```php
     protected $middlewareGroups = [
         'web' => [
             //..
-            Zofe\Auth\Middleware\ComponentByRole::class,
+            \App\Modules\Auth\Http\Middleware\ComponentByRole::class,
         ],
     ]
 ```

@@ -53,7 +53,7 @@ class BasicPermissionTest extends TestCase
 
     public function test_user_can_see_login()
     {
-        $this->get(route('login'))
+        $this->get(route_lang('login'))
             ->assertSuccessful()
             ->assertViewIs('auth::auth.login');
     }
@@ -61,7 +61,7 @@ class BasicPermissionTest extends TestCase
     public function test_can_see_livewire_component_on_permissions_page()
     {
         $this->actingAs($this->admin)
-            ->get(route('auth.permissions'))
+            ->get(route_lang('auth.permissions'))
             ->assertSuccessful()
             ->assertSeeLivewire('auth::admin-permissions-table');
     }
@@ -69,7 +69,7 @@ class BasicPermissionTest extends TestCase
     public function test_user_cant_see_livewire_component_on_permissions_page()
     {
         $this->actingAs($this->user)
-            ->get(route('auth.permissions'))
+            ->get(route_lang('auth.permissions'))
             ->assertForbidden()
             ;
     }

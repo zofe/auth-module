@@ -20,7 +20,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('password.confirm') }}">
+                        <form method="POST" action="{{ route_lang('password.confirm') }}">
                             @csrf
 
                             <div class="form-group row">
@@ -37,7 +37,7 @@
                                     <button type="submit" class="btn btn-primary">{{ __('Confirm password') }}</button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ route_lang('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif

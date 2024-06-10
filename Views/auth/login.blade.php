@@ -3,7 +3,7 @@
 @section('main-content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-5">
                     <div class="row">
@@ -39,7 +39,7 @@
                                     </div>
                                 @endif
 
-                                <form method="POST" action="{{ route('login') }}" class="user">
+                                <form method="POST" action="{{ route_lang('login') }}" class="user">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
@@ -72,7 +72,7 @@
 {{--                                    </div>--}}
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user w-100 mt-2">
                                             {{ __('Login') }}
                                         </button>
                                     </div>
@@ -82,20 +82,41 @@
 
                                 <hr>
 
-
-                                @if (Route::has('partner.registration'))
-                                    <div class="text-center">
-                                        {{ __('company.not_a_partner') }} <br>
-                                        <a class="small" href="{{ route_lang('partner.registration') }}">{{ __('company.become_partner') }}</a>
+                                <div class="text-center mb-2">Login or Signup with</div>
+                                <div class="row g-1">
+                                    <div class="col-6">
+                                        <a class="w-100 small btn btn-dark text-white" href="{{ route_lang('github.redirect') }}"><i class="fab fa-github"></i> Github</a>
                                     </div>
-                                @endif
-
-                                @if (Route::has('partner.registration'))
-                                    <div class="text-center mt-3">
-                                        {{ __('company.did_you_buy_your_first_box_from_one_of_our_distributors') }}<br>
-                                        <a class="small" href="{{ route_lang('dealer.registration') }}">{{ __('company.register_your_device') }}</a>
+                                    <div class="col-6">
+                                        <a style="border-color: #000; color: #000" class="w-100 small btn" href="{{ route_lang('google.redirect') }}"><i class="fab fa-google"></i> Google</a>
                                     </div>
-                                @endif
+                                </div>
+                                <div class="row g-1 pt-1">
+                                    <div class="col-6">
+{{--                                        <a style="background-color: #5865f2" class="w-100 small btn text-white" href="{{ route_lang('discord.redirect') }}"><i class="fab fa-discord"></i> Discord</a>--}}
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row g-1">
+{{--                                    <a class="w-100 small btn btn-primary" href="{{ route_lang('companies.companies.signup') }}"><i class="fas fa-envelope"></i> Sign up with email</a>--}}
+                                </div>
+
+
+{{--                                @if (Route::has('partner.registration'))--}}
+{{--                                    <div class="text-center">--}}
+{{--                                        {{ __('company.not_a_partner') }} <br>--}}
+{{--                                        <a class="small" href="{{ route_lang('partner.registration') }}">{{ __('company.become_partner') }}</a>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
+
+{{--                                @if (Route::has('partner.registration'))--}}
+{{--                                    <div class="text-center mt-3">--}}
+{{--                                        {{ __('company.did_you_buy_your_first_box_from_one_of_our_distributors') }}<br>--}}
+{{--                                        <a class="small" href="{{ route_lang('dealer.registration') }}">{{ __('company.register_your_device') }}</a>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
 
 
                             </div>

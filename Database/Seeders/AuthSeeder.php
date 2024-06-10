@@ -2,9 +2,11 @@
 
 namespace App\Modules\Auth\Database\Seeders;
 
+use App\Models\User;
 use App\Modules\Auth\Models\Permission;
 use App\Modules\Auth\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthSeeder extends Seeder
@@ -29,6 +31,16 @@ class AuthSeeder extends Seeder
             $adminRole->givePermissionTo(config('auth.role_permissions.'.$role));
         }
 
+
+
+        $user = User::factory()->create([
+            'email' => 'admin@laravel',
+            'password' => Hash::make('admin'),
+        ]);
+
+        //role assign
+        $user->assignRole('admin');
+        $user->save();
 
     }
 }
