@@ -6,8 +6,6 @@ namespace App\Modules\Auth\Livewire;
 
 use App\Models\User;
 use App\Modules\Auth\Models\CompanyRoles;
-use App\Modules\Auth\Models\Permission;
-use App\Modules\Auth\Models\Role;
 use App\Modules\Log\Services\ActivityLogService;
 use Livewire\Component;
 use App\Modules\Auth\Traits\Authorize;

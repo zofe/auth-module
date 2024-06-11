@@ -2,9 +2,7 @@
 
 namespace App\Modules\Auth\Livewire;
 
-use App\Models\User;
 use App\Modules\Auth\Models\CompanyRoles;
-use App\Modules\Auth\Models\Role;
 use App\Modules\Auth\Traits\Authorize;
 use Zofe\Rapyd\Traits\WithDataTable;
 use Livewire\Component;

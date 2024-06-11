@@ -1,2 +1,3 @@
-@extends('components.layouts.app')
+@extends('layout::admin')
+{{--@extends('components.layouts.app')--}}
 
