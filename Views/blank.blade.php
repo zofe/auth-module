@@ -1,9 +1,8 @@
-@extends('components.layouts.blank')
+@extends('layout::auth')
 
-{{--@extends('layout::auth')--}}
+@section('navbar')
+@endsection
 
-{{--@section('navbar')--}}
-{{--@endsection--}}
+@section('breadcrumbs')
+@endsection
 
-{{--@section('breadcrumbs')--}}
-{{--@endsection--}}
