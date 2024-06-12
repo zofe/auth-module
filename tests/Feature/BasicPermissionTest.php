@@ -27,14 +27,14 @@ class BasicPermissionTest extends TestCase
     {
         parent::setUp();
 
-        Config::set('auth.roles',  ['admin', 'user']);
-        Config::set('auth.permissions', [
+        Config::set('permissions.roles',  ['admin', 'user']);
+        Config::set('permissions.permissions', [
             'view everything', 'edit everything', 'export everything',
             'view own business', 'edit own business',
             'view own users', 'edit own users',
             'view own tickets', 'edit own tickets',
         ]);
-        Config::set('auth.role_permissions', [
+        Config::set('permissions.role_permissions', [
             'admin' => [
                 'view everything', 'edit everything', 'export everything',
             ],

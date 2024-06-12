@@ -19,16 +19,16 @@ class AuthSeeder extends Seeder
     public function run()
     {
 
-        foreach (config('auth.permissions') as $permission) {
+        foreach (config('permissions.permissions') as $permission) {
             Permission::firstOrNew(['name' => $permission])->save();
         }
 
-        foreach( config('auth.roles') as $role)
+        foreach( config('permissions.roles') as $role)
         {
             //roles
             $adminRole = Role::firstOrNew(['name' => $role]);
             $adminRole->save();
-            $adminRole->givePermissionTo(config('auth.role_permissions.'.$role));
+            $adminRole->givePermissionTo(config('permissions.role_permissions.'.$role));
         }
 
 
