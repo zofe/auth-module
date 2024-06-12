@@ -103,7 +103,7 @@ class AuthServiceProvider extends ServiceProvider
             AuthCommand::class,
         ]);
 
-        Artisan::call('rpd:auth');
+        //Artisan::call('rpd:auth');
 
     }
 
