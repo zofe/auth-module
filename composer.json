@@ -13,7 +13,6 @@
         "php": "^8.2",
         "illuminate/config": "^11.0",
         "illuminate/contracts": "^11.0",
-        "zofe/rapyd-admin": "dev-main|^0.11",
         "lab404/laravel-impersonate": "^1.7.5",
         "spatie/laravel-permission": "^6.7.0",
         "laravel/fortify": "^v1.21.3",
