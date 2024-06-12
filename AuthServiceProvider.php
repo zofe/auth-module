@@ -104,6 +104,8 @@ class AuthServiceProvider extends ServiceProvider
         ]);
 
         Artisan::call('rpd:auth');
+        Artisan::call('migrate');
+        Artisan::call('db:seed', ['--class' => 'App\\Modules\\Auth\\Database\\Seeders\\AuthSeeder', '--no-interaction' => true]);
         //$this->configAuthorizeModules();
     }
 
