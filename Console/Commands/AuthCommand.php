@@ -24,5 +24,11 @@ class AuthCommand extends Command
 
         File::copy($stubPath, $userModelPath);
         $this->info("User model created");
+
+        $this->call('migrate',[ '--no-interaction' => true]);
+        $this->call('db:seed', ['--class' => 'App\\Modules\\Auth\\Database\\Seeders\\AuthSeeder', '--no-interaction' => true]);
+
+        //Artisan::call('migrate',[ '--no-interaction' => true]);
+        //Artisan::call('db:seed', ['--class' => 'App\\Modules\\Auth\\Database\\Seeders\\AuthSeeder', '--no-interaction' => true]);
     }
 }
