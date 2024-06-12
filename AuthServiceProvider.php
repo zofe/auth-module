@@ -9,6 +9,7 @@ use App\Modules\Auth\Console\Commands\AuthCommand;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
@@ -101,6 +102,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->commands([
             AuthCommand::class,
         ]);
+
+        Artisan::call('rpd:auth');
         //$this->configAuthorizeModules();
     }
 
