@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/permission.php' => config_path('permission.php'),
-                __DIR__ . '/.fortify.php' => config_path('fortify.php'),
+                __DIR__ . '/fortify.php' => config_path('fortify.php'),
             ], 'config');
 
         }
@@ -103,7 +103,7 @@ class AuthServiceProvider extends ServiceProvider
             AuthCommand::class,
         ]);
 
-        //Artisan::call('rpd:auth');
+
 
     }
 

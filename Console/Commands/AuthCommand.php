@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class AuthCommand extends Command
 {
-    protected $signature = 'rpd:auth';
+    protected $signature = 'rpd:make:auth';
 
     protected $description = 'Make User model';
 
