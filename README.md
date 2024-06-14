@@ -1,6 +1,6 @@
 # Auth Module
 
-This is an auth module for a Rapyd Admin, a Laravel application bootstrap for your projects
+This is an auth module for a [Rapyd Admin](https://github.com/zofe/rapyd-admin), a Laravel application bootstrap for your projects
 
 It embed:
 
