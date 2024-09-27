@@ -15,7 +15,7 @@ class UsersTable extends Component
 
     public function booted()
     {
-       $this->authorize('admin|edit users');
+       $this->authorize('admin|view everything|edit everything|view users|edit users');
     }
 
     public function updatedSearch()
