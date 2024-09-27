@@ -84,39 +84,10 @@
 
                                 <div class="text-center mb-2">Login or Signup with</div>
                                 <div class="row g-1">
-                                    <div class="col-6">
-                                        <a class="w-100 small btn btn-dark text-white" href="{{ route_lang('github.redirect') }}"><i class="fab fa-github"></i> Github</a>
-                                    </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <a style="border-color: #000; color: #000" class="w-100 small btn" href="{{ route_lang('google.redirect') }}"><i class="fab fa-google"></i> Google</a>
                                     </div>
                                 </div>
-                                <div class="row g-1 pt-1">
-                                    <div class="col-6">
-{{--                                        <a style="background-color: #5865f2" class="w-100 small btn text-white" href="{{ route_lang('discord.redirect') }}"><i class="fab fa-discord"></i> Discord</a>--}}
-                                    </div>
-                                </div>
-
-                                <hr>
-
-                                <div class="row g-1">
-{{--                                    <a class="w-100 small btn btn-primary" href="{{ route_lang('companies.companies.signup') }}"><i class="fas fa-envelope"></i> Sign up with email</a>--}}
-                                </div>
-
-
-{{--                                @if (Route::has('partner.registration'))--}}
-{{--                                    <div class="text-center">--}}
-{{--                                        {{ __('company.not_a_partner') }} <br>--}}
-{{--                                        <a class="small" href="{{ route_lang('partner.registration') }}">{{ __('company.become_partner') }}</a>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-
-{{--                                @if (Route::has('partner.registration'))--}}
-{{--                                    <div class="text-center mt-3">--}}
-{{--                                        {{ __('company.did_you_buy_your_first_box_from_one_of_our_distributors') }}<br>--}}
-{{--                                        <a class="small" href="{{ route_lang('dealer.registration') }}">{{ __('company.register_your_device') }}</a>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
 
 
                             </div>

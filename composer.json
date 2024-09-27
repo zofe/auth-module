@@ -16,7 +16,8 @@
         "lab404/laravel-impersonate": "^1.7.5",
         "spatie/laravel-permission": "^6.7.0",
         "laravel/fortify": "^v1.21.3",
-        "propaganistas/laravel-disposable-email": "^2.4.0"
+        "propaganistas/laravel-disposable-email": "^2.4.0",
+        "laravel/socialite": "^5.16"
     },
     "require-dev": {
         "orchestra/testbench": "^9.0",

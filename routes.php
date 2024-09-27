@@ -53,26 +53,9 @@ Route::get('auth/permissions/edit/{role:id}', PermissionsEdit::class)
 
 //Route::impersonate();
 
-Route::get('/github/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-})->name('github.redirect');
-
 Route::get('/google/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 })->name('google.redirect');
-
-Route::get('/discord/auth/redirect', function () {
-    return Socialite::driver('discord')->redirect();
-})->name('discord.redirect');
-
-Route::get('/github/auth/callback', function () {
-    try {
-        $payload = Socialite::driver('github')->stateless()->user();
-    } catch (\Exception $e) {
-        return redirect('/login');
-    }
-    return SocialiteService::loginOrRegister('github', $payload);
-});
 
 Route::get('/google/auth/callback', function () {
     try {
@@ -83,13 +66,5 @@ Route::get('/google/auth/callback', function () {
     return SocialiteService::loginOrRegister('google', $payload);
 });
 
-Route::get('/discord/auth/callback', function () {
-    try {
-        $payload = Socialite::driver('discord')->stateless()->user();
-    } catch (\Exception $e) {
-        return redirect('/login');
-    }
-    return SocialiteService::loginOrRegister('discord', $payload);
-});
 
 
