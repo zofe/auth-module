@@ -29,7 +29,18 @@
                 <td>
                     <a href="{{ route_lang('auth.users.view',$user->id) }}">{{ $user->id }}</a>
                 </td>
-                <td>{{ $user->name }}</td>
+                <td>
+                    @canImpersonate
+
+                    @if($user->canBeImpersonated())
+                        <a  href="{{ route('impersonate', $user->id) }}"
+                            class="btn btn-xsm btn-link">
+                            <span class="icon"><i class="fas fa-user-secret"></i></span>
+                        </a>
+                    @endif
+                    @endCanImpersonate
+                    {{ $user->name }}
+                </td>
                 <td>{{ $user->email }}</td>
                 <td>{{ optional(optional($user->roles)->pluck('name'))->join(',') }}</td>
             </tr>
